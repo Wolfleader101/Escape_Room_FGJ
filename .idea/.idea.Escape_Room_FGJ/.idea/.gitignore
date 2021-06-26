@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Escape_Room_FGJ.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../:\Coding\Unity Projects\Escape_Room_FGJ\.idea\.idea.Escape_Room_FGJ\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
