@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ScienceInputs : MonoBehaviour {
     
+    // Reference variable for inputs.
     private PlayerInput input;
 
+    // Input variables that are set and can be accessed by other classes.
     private bool _interact = false;
     public bool Interact => _interact;
 
@@ -13,7 +15,7 @@ public class ScienceInputs : MonoBehaviour {
         input = new PlayerInput();
     }
 
-    void Update() {
+    void Update() { // Set state of all inputs.
         _interact = input.Player.Interact.triggered;
     }
 
