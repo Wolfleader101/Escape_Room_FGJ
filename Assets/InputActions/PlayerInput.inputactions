@@ -30,9 +30,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Grab",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "d7516daf-665e-488f-b71a-9a0bf84d3141",
+                    "id": "a494728f-e134-41b9-bfdb-cd23c403f3e9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -118,12 +118,12 @@
                 },
                 {
                     "name": "",
-                    "id": "fd69e8d8-0719-4d41-b494-ea344e648ab8",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "id": "8e7c56cb-df65-47b1-a960-087f930432f6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
