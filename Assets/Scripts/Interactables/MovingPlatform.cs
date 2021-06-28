@@ -15,6 +15,8 @@ public class MovingPlatform : InteractableBase {
 
     [SerializeField] Vector3[] positions;
 
+    private int direction = 1;
+
     private Vector3 oldPos;
 
     private float timer;
@@ -23,11 +25,7 @@ public class MovingPlatform : InteractableBase {
         index = Mathf.Clamp(index, 0, Mathf.Max(positions.Length - 1, 0));
     }
 
-    private void Start(){
-        gameObject.layer = LayerMask.NameToLayer("MovingPlatform");
-    }
-
-    private void FixedUpdate(){
+    private void Update(){
         oldPos = transform.position;
 
         if(timer > 0f){
@@ -35,12 +33,15 @@ public class MovingPlatform : InteractableBase {
         }
 
         if(_active){
-            if(index >= positions.Length){
+            if(index >= positions.Length && direction == 1){
                 if(repeatable){
                     index = 0;
                 } else {
-                    return;
+                    direction = -1;
+                    index = Mathf.Max(positions.Length - 2, 0);
                 }
+            } else if(index == 0 && direction == -1){
+                direction = 1;
             }
 
             Vector3 dir = (positions[index] - transform.position);
@@ -56,29 +57,6 @@ public class MovingPlatform : InteractableBase {
         }
     }
 
-    private void OnTriggerStay(Collider other){
-        GameObject obj = other.gameObject;
-
-        if(obj.TryGetComponent<CharacterController>(out CharacterController cc)){
-            cc.Move(transform.position - oldPos);
-            print("true");
-
-        } else if(obj.TryGetComponent<Rigidbody>(out Rigidbody rb)){
-            rb.MovePosition(rb.transform.position + (transform.position - oldPos));
-
-        } else {
-            obj.transform.position += transform.position - oldPos;
-        }
-    }
-
-    //private void OnCollisionEnter(Collision collisionInfo){
-    //    collisionInfo.collider.gameObject.transform.parent = transform;
-    //}
-
-    //private void OnCollisionExit(Collision collisionInfo){
-    //    collisionInfo.collider.gameObject.transform.parent = null;
-    //}
-
     public override void Interact(){
         if(!_active && timer <= 0f){
             Activate();
@@ -87,7 +65,7 @@ public class MovingPlatform : InteractableBase {
 
     public override void Activate(){
         _active = true;
-        index++;
+        index += direction;
     }
 
     public override void Deactivate(){

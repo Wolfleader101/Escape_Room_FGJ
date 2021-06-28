@@ -17,7 +17,6 @@ public class HoldItem : InteractableBase {
     private void Start() {
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;
-        gameObject.layer = LayerMask.NameToLayer("HoldItem");
     }
 
     private void FixedUpdate(){
