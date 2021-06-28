@@ -23,9 +23,6 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
 
     [SerializeField] private float groundDistance = 0.4f;
-    
-    [SerializeField] private LayerMask groundMask;
-
 
     private float _mouseX;
     private float _mouseY;
@@ -49,7 +46,7 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance);
         
         if (_isGrounded && _velocity.y < 0)
         {
