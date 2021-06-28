@@ -5,24 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class HoldItem : InteractableBase {
     
-    [SerializeField] private float distanceFromPlayer;
-    [SerializeField] private float speed;
+    [SerializeField] private float distanceFromPlayer = 5;
+    [SerializeField] private float speed = 10;
 
     private Rigidbody rb;
     
-    void OnValidate()
-    { 
-        // Makes sure that _interactable is never turned off in the inspector. If you do not want a holdable item, do not attach this script.
+    private void OnValidate(){ // Makes sure that _interactable is never turned off in the inspector. If you do not want a holdable item, do not attach this script.
         _interactable = true;
     }
 
-    void Start()
-    {
+    private void Start() {
         rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        gameObject.layer = LayerMask.NameToLayer("HoldItem");
     }
 
-    void FixedUpdate()
-    {
+    private void FixedUpdate(){
         if(_active){
             // Get hold items desired position, which is the point where the player would hold the item.
             Vector3 desiredPos = Camera.main.transform.position + (Camera.main.transform.forward * distanceFromPlayer);
@@ -32,22 +30,17 @@ public class HoldItem : InteractableBase {
         }
     }
 
-    public override void Interact()
-    {
+    public override void Interact(){
         return;
     }
 
-    public override void Activate()
-    { 
-        // Disables gravity and rotation, enables object to move towards hold point.
+    public override void Activate(){ // Disables gravity and rotation, enables object to move towards hold point.
         _active = true;
         rb.useGravity = false;
         rb.freezeRotation = true;
     }
 
-    public override void Deactivate()
-    { 
-        // Deactivates holding, and reactivates gravity and rotation.
+    public override void Deactivate(){ // Deactivates holding, and reactivates gravity and rotation.
         _active = false;
         rb.useGravity = true;
         rb.freezeRotation = false;
