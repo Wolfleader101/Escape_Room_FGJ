@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 trackSelection = true
 fetchPreview = true
 wantsMore = false
@@ -54,3 +55,6 @@ searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
 showSavedSearchPanel = false
+=======
+{}
+>>>>>>> main
