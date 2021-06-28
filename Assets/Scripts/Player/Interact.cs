@@ -65,6 +65,10 @@ public class Interact : MonoBehaviour
         }
     }
 
+    private void LateUpdate(){
+        _isInteracting = false;
+    }
+
     private void OnDrawGizmos()
     {
         // store main cam as a variable as calling Camera.main is expensive
@@ -80,6 +84,6 @@ public class Interact : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext value)
     {
-        _isInteracting = value.action.triggered;
+        _isInteracting = value.canceled;
     }
 }
