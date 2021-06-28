@@ -16,9 +16,13 @@ public class PawnSpawner : MonoBehaviour
 
         foreach (var component in components)
         {
-            Type type = System.Type.GetType(component);
+            // get type based of string, note if you enter an incorrect name it wont work
+            Type type = Type.GetType(component);
 
-            player.AddComponent(type);
+            var attach = player.AddComponent(type);
+            if(attach == null) Debug.LogError($"Error: Cannot add {component} to player. (Most likely a typo)");
+
+
         }
     }
 
