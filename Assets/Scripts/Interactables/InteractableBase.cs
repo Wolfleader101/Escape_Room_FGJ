@@ -13,8 +13,9 @@ public abstract class InteractableBase : MonoBehaviour {
     protected bool _active = false;
     public bool Active => _active;
 
-    /* These are the three functions that need to be implemented in all classes that inherit from this class.
-        To reimplement Interact(), for example, you need to type 'public override void Interact(){...}'. The override keyword lets you reimplement the function. */
+    /*  These are the three functions that need to be implemented in all classes that inherit from this class.
+        To reimplement Interact(), for example, you need to type 'public override void Interact(){...}'. 
+        The override keyword lets you reimplement the function. */
     public abstract void Interact();
     public abstract void Activate();
     public abstract void Deactivate();
