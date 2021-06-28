@@ -18,11 +18,10 @@ public class PawnSpawner : MonoBehaviour
         {
             // get type based of string, note if you enter an incorrect name it wont work
             Type type = Type.GetType(component);
+            if(type == null) Debug.LogError($"Error: Cannot add {component} to player. (Most likely a typo)");
 
-            var attach = player.AddComponent(type);
-            if(attach == null) Debug.LogError($"Error: Cannot add {component} to player. (Most likely a typo)");
-
-
+            player.AddComponent(type);
+            
         }
     }
 
