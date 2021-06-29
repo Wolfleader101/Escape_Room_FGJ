@@ -41,36 +41,22 @@ public class CollisionInteract : MonoBehaviour {
             }
         }
 
-        // Check if object is a button type interaction.
-        bool isButtonType = false;
+        // If any of the valid interactables is found, run Interact() on all interactables on the colliding object.
+        bool valid = false;
         foreach(InteractableBase interactable in interactables) {
-            isButtonType |= (interactable is Button);
-            if(interactable is Button) {
-                print("Found Button");
-            }
-        }
+            valid |= buttonTypeInteractValid &&
+                     (button && interactable is Button);
 
-        // If object is a button type, check whether interacting with the object is a valid option. If so, call Interact() on all interactables.
-        if(isButtonType) {
-            bool interact = buttonTypeInteractValid && (button);
+            valid |= (movingPlatform && interactable is MovingPlatform) ||
+                     (switchPositions && interactable is SwitchPositions) ||
+                     (switchMaterials && interactable is SwitchMaterials);
 
-            if(interact) {
-                foreach(InteractableBase interactable in interactables) {
-                    interactable.Interact();
+            if(valid) {
+                foreach(InteractableBase _interactable in interactables) {
+                    _interactable.Interact();
                 }
-            }
-        } else {
-            // Loop through all interactables on colliding object, and if it is a valid collision interaction type, call Interact().
-            foreach(InteractableBase interactable in interactables) {
-                // If interactable is not a button type, test for all other potential interactions.
-                bool interact = (movingPlatform && interactable is MovingPlatform) ||
-                                (switchPositions && interactable is SwitchPositions) ||
-                                (switchMaterials && interactable is SwitchMaterials);
 
-                // If valid, Interact().
-                if(interact) {
-                    interactable.Interact();
-                }
+                break;
             }
         }
     }
