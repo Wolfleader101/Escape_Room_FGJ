@@ -19,8 +19,6 @@ public class FirstPersonController : MonoBehaviour {
 
     [SerializeField] private float gravityScale = -9.81f;
 
-    [SerializeField] private Transform groundCheck;
-
     private float _mouseX;
     private float _mouseY;
     private float _xRotation = 0f;
@@ -30,7 +28,6 @@ public class FirstPersonController : MonoBehaviour {
 
 
     private Vector3 _velocity;
-    private bool _isGrounded;
 
     private void Start() {
         if(playerInput == null) playerInput = GetComponent<PlayerInput>();

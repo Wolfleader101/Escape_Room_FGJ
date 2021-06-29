@@ -4,11 +4,11 @@ using UnityEngine;
 
 // This is an abstract class. It is the base class that all interactable items should inherit from. Do not attach this script to an object.
 public abstract class InteractableBase : MonoBehaviour {
-    
+
     // This variable defines whether the player is able to call the object's Interact() function.
     [SerializeField] protected bool _interactable = true;
     public bool Interactable => _interactable;
-    
+
     // This defines the current state of the variable, whether it is in active or inactive mode.
     protected bool _active = false;
     public bool Active => _active;

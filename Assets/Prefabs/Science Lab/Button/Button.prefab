@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 1
+  parent: {fileID: 2775088879406377861}
   canDeactivate: 1
   instantDeactivate: 1
   activeOffset: {x: 0, y: 0, z: 0}

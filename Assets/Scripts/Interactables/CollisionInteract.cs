@@ -8,12 +8,15 @@ public class CollisionInteract : MonoBehaviour {
     // This is the list of all interactions compatible with CollisionInteract. Select which interactions are valid for collisions.
     [Header("Interactable Settings")]
     [SerializeField] private bool button = false;
+    [SerializeField] private bool pressurePlate = false;
+    [Header("")]
     [SerializeField] private bool movingPlatform = false;
     [SerializeField] private bool switchPositions = false;
     [SerializeField] private bool switchMaterials = false;
 
     // Customisations for certain interaction categories.
     [Header("Customisation")]
+    // Whether a collision with a button type interaction must occur from generally the top to be valid. Top is defined as the button's transform.up.
     [SerializeField] private bool buttonTypeMustCollideTop = true;
 
     private void OnCollisionEnter(Collision collisionInfo) {
@@ -24,8 +27,12 @@ public class CollisionInteract : MonoBehaviour {
         // If interactables is null, obj is not an interactable. Exit.
         if(interactables == null) { return; }
 
+        if(obj.TryGetComponent<PressurePlate>(out PressurePlate plate)) {
+            print("Pressure Plate");
+        }
+
         /* If button collisions do not need to be from the top, var will be set to true and the next if statement will be skipped.
-            Otherwise, var will be false, and validity will be determined inside the if statement. */
+            Otherwise, var will start as false, and validity will be determined inside the if statement. */
         bool buttonTypeInteractValid = !buttonTypeMustCollideTop;
 
         if(buttonTypeMustCollideTop) {
@@ -45,7 +52,8 @@ public class CollisionInteract : MonoBehaviour {
         bool valid = false;
         foreach(InteractableBase interactable in interactables) {
             valid |= buttonTypeInteractValid &&
-                     (button && interactable is Button);
+                     (button && interactable is Button) ||
+                     (pressurePlate && interactable is PressurePlate);
 
             valid |= (movingPlatform && interactable is MovingPlatform) ||
                      (switchPositions && interactable is SwitchPositions) ||

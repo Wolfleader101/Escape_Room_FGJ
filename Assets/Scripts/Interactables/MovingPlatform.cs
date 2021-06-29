@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class MovingPlatform : InteractableBase {
 
     // Whether the object will continue looping through the positions, repeating back to the first index when at the end.
@@ -18,6 +19,8 @@ public class MovingPlatform : InteractableBase {
 
     [SerializeField] Vector3[] positions;
 
+    private Rigidbody rb;
+
     private int direction = 1;
 
     private Vector3 oldPos;
@@ -28,7 +31,13 @@ public class MovingPlatform : InteractableBase {
         index = Mathf.Clamp(index, 0, Mathf.Max(positions.Length - 1, 0));
     }
 
-    private void Update() {
+    private void Start() {
+        rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.isKinematic = true;
+    }
+
+    private void FixedUpdate() {
         oldPos = transform.position;
 
         if(timer > 0f) {
@@ -50,14 +59,18 @@ public class MovingPlatform : InteractableBase {
             Vector3 dir = (positions[index] - transform.position);
 
             if(dir.magnitude <= (speed * Time.deltaTime)) {
-                transform.position = positions[index];
+                rb.MovePosition(positions[index]);
                 Deactivate();
             } else {
-                transform.position += dir.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + (dir.normalized * speed * Time.deltaTime));
             }
         } else if(continuous) {
             Interact();
         }
+    }
+
+    private void OnCollisionEnter(Collider collider) {
+
     }
 
     public override void Interact() {
