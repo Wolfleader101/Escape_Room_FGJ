@@ -5,13 +5,19 @@ using UnityEngine;
 // Simple interaction, mainly for test purposes, that simply toggles an objects materials between two
 public class SwitchMaterials : InteractableBase {
 
-    [SerializeField] private bool reversible = true; // Whether the interaction is toggleable or single use.
-    [SerializeField] private Material mat1; // Inactive material.
-    [SerializeField] private Material mat2; // Active material.
+    // Whether the interaction is toggleable or single use.
+    [SerializeField] private bool reversible = true; 
+
+    // Inactive material.
+    [SerializeField] private Material mat1; 
+
+    // Active material.
+    [SerializeField] private Material mat2; 
 
     private Renderer rend;
 
-    void OnValidate(){ // This function activates whenever you edit something in the inspector. It will set the object's material to its inactive one (mat1), if possible.
+    // This function activates whenever you edit something in the inspector. It will set the object's material to its inactive one (mat1), if possible.
+    void OnValidate(){ 
         if(mat1 != null){
             GetComponent<Renderer>().sharedMaterial = mat1;
         }
@@ -24,7 +30,8 @@ public class SwitchMaterials : InteractableBase {
     public override void Interact(){
         if(!_active){
             Activate();
-        } else if(reversible) { // Will only swap back to mat1 if it is reversible.
+        } else if(reversible) { 
+            // Will only swap back to mat1 if it is reversible.
             Deactivate();
         }
     }

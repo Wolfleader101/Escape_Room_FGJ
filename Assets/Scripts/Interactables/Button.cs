@@ -30,7 +30,8 @@ public class Button : InteractableBase {
     public override void Interact(){
         if(!_active){
             Activate();
-        } else if(!isSingleUse) { // Will only allow deactivation if button is toggleable.
+        } else if(!isSingleUse) { 
+            // Will only allow deactivation if button is toggleable.
             Deactivate();
         }
     }
@@ -38,14 +39,16 @@ public class Button : InteractableBase {
     public override void Activate(){
         _active = true;
 
-        foreach(InteractableBase obj in objects){ // Activate() all linked objects.
+        // Activate() all linked objects.
+        foreach(InteractableBase obj in objects){ 
             obj.Activate();
         }
     }
 
-    public override void Deactivate(){ // Deactivate() all linked objects.
+    public override void Deactivate(){
         _active = false;
 
+        // Deactivate() all linked objects.
         foreach(InteractableBase obj in objects){
             obj.Deactivate();
         }

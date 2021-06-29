@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MovingPlatform : InteractableBase {
     
-    [SerializeField] private bool repeatable; // Whether the object will continue looping through the positions, repeating back to the first index when at the end.
-    [SerializeField] private bool continuous; // Whether the object will autonomously travel between positions continuously, without need for input.
+    // Whether the object will continue looping through the positions, repeating back to the first index when at the end.
+    [SerializeField] private bool repeatable; 
+
+    // Whether the object will autonomously travel between positions continuously, without need for input.
+    [SerializeField] private bool continuous; 
 
     [SerializeField] private float speed;
 
