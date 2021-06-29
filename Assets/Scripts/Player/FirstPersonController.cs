@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
@@ -38,6 +38,7 @@ public class FirstPersonController : MonoBehaviour
     private void Start()
     {
         if(playerInput == null) playerInput = GetComponent<PlayerInput>();
+        if(characterController == null) characterController = GetComponent<CharacterController>();
         
         //lock cursor to mid
         Cursor.lockState = CursorLockMode.Locked;
@@ -46,9 +47,7 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance);
-        
-        if (_isGrounded && _velocity.y < 0)
+        if (characterController.isGrounded && _velocity.y < 0)
         {
             _velocity.y = -2f;
         }
@@ -82,7 +81,7 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext value)
     {
-        if (value.started && _isGrounded)
+        if (value.started && characterController.isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityScale);
         }
