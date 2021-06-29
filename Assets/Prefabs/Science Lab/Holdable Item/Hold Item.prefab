@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5479758453561176042}
   - component: {fileID: 5479758453561176053}
   - component: {fileID: 5479758453561176046}
+  - component: {fileID: 42768295639770558}
   m_Layer: 0
   m_Name: Hold Item
   m_TagString: Untagged
@@ -129,3 +130,19 @@ MonoBehaviour:
   _interactable: 1
   distanceFromPlayer: 5
   speed: 10
+--- !u!114 &42768295639770558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479758453561176052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c6ec14e427cd549be886a2c764d477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: 1
+  movingPlatform: 0
+  switchMaterial: 0
+  buttonTypeMustCollideTop: 1

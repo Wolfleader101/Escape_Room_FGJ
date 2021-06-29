@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 60b149b100c03744d8d40dc52d029397, type: 2}
+  - {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,5 +111,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactable: 1
   reversible: 1
-  mat1: {fileID: 2100000, guid: 60b149b100c03744d8d40dc52d029397, type: 2}
+  mat1: {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
   mat2: {fileID: 2100000, guid: 96308733fe99be644bc940594d422620, type: 2}
