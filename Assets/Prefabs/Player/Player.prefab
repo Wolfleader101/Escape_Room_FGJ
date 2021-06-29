@@ -33,7 +33,6 @@ Transform:
   m_Children:
   - {fileID: 1010225081504706550}
   - {fileID: 6277976021780789940}
-  - {fileID: 1010225080872578618}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -71,11 +70,9 @@ MonoBehaviour:
   mouseSens: 90
   cameraTransform: {fileID: 1010225081504706550}
   characterController: {fileID: 1010225079946970590}
-  moveSpeed: 10
+  moveSpeed: 7
   jumpHeight: 2
-  gravityScale: -9.81
-  groundCheck: {fileID: 1010225080872578618}
-  groundDistance: 0.4
+  gravityScale: -25
 --- !u!114 &1010225079946970585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,36 +183,6 @@ MonoBehaviour:
   maxReach: 5
   distance: 0.4
   size: 0.0025
---- !u!1 &1010225080872578613
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1010225080872578618}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1010225080872578618
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010225080872578613}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1010225079946970587}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1010225081504706547
 GameObject:
   m_ObjectHideFlags: 0

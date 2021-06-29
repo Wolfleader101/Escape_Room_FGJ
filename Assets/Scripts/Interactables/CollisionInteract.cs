@@ -27,10 +27,6 @@ public class CollisionInteract : MonoBehaviour {
         // If interactables is null, obj is not an interactable. Exit.
         if(interactables == null) { return; }
 
-        if(obj.TryGetComponent<PressurePlate>(out PressurePlate plate)) {
-            print("Pressure Plate");
-        }
-
         /* If button collisions do not need to be from the top, var will be set to true and the next if statement will be skipped.
             Otherwise, var will start as false, and validity will be determined inside the if statement. */
         bool buttonTypeInteractValid = !buttonTypeMustCollideTop;

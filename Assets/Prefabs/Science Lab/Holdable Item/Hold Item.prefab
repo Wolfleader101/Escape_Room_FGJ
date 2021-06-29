@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 1
-  distanceFromPlayer: 5
+  distanceFromPlayer: 4
   speed: 10
 --- !u!114 &42768295639770558
 MonoBehaviour:
@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: 1
+  pressurePlate: 0
   movingPlatform: 0
-  switchMaterial: 0
+  switchPositions: 0
+  switchMaterials: 0
   buttonTypeMustCollideTop: 1

@@ -27,18 +27,21 @@ public class MovingPlatform : InteractableBase {
 
     private float timer;
 
+    private Vector3 startPos;
+    private float percentTravelled;
+
     private void OnValidate() {
         index = Mathf.Clamp(index, 0, Mathf.Max(positions.Length - 1, 0));
     }
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
-        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.interpolation = RigidbodyInterpolation.Extrapolate;
         rb.isKinematic = true;
     }
 
     private void FixedUpdate() {
-        oldPos = transform.position;
+        //oldPos = transform.position;
 
         if(timer > 0f) {
             timer -= Time.deltaTime;
@@ -48,6 +51,7 @@ public class MovingPlatform : InteractableBase {
             if(index >= positions.Length && direction == 1) {
                 if(repeatable) {
                     index = 0;
+                    startPos = transform.position;
                 } else {
                     direction = -1;
                     index = Mathf.Max(positions.Length - 2, 0);
@@ -67,10 +71,20 @@ public class MovingPlatform : InteractableBase {
         } else if(continuous) {
             Interact();
         }
+
+        oldPos = transform.position;
     }
 
-    private void OnCollisionEnter(Collider collider) {
+    private void OnTriggerStay(Collider collider) {
+        GameObject obj = collider.gameObject;
 
+        if(obj.TryGetComponent<CharacterController>(out CharacterController ccOther)) {
+            ccOther.Move(rb.velocity * Time.deltaTime);
+        } else if(obj.TryGetComponent<Rigidbody>(out Rigidbody rbOther)) {
+            if(rb.velocity != Vector3.zero) {
+                rbOther.velocity = new Vector3(rb.velocity.x, rbOther.velocity.y, rb.velocity.z);
+            }
+        }
     }
 
     public override void Interact() {

@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PressurePlate : InteractableBase {
 
+    /* This number is set to -2 as the pressure plate will always collide with the ground and the base plate part of its frame.
+        Setting this to -2 effectively negates these two colliders from interacting with the pressure plate. */
     private int collisionCount = -2;
 
     // Pressure plates must use CollisionInteract to allow interactions with itself.
@@ -24,9 +26,6 @@ public class PressurePlate : InteractableBase {
 
     private void OnTriggerEnter(Collider collider) {
         collisionCount++;
-        if(collider.gameObject.TryGetComponent<FirstPersonController>(out FirstPersonController fpc)) {
-            print("PLayer Found");
-        }
     }
 
     private void OnTriggerExit(Collider collider) {

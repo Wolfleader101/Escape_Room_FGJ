@@ -15,15 +15,11 @@ public class SwitchPositions : InteractableBase {
 
     [SerializeField] private float speed;
 
-    [SerializeField] private bool usePhysics;
-
     private Vector3 inactivePos;
 
     private Vector3 activePos;
 
     private Vector3 targetPos;
-
-    private Rigidbody rb;
 
     private void OnValidate() {
         if(!canDeactivate) {
@@ -35,27 +31,9 @@ public class SwitchPositions : InteractableBase {
         inactivePos = transform.position;
         activePos = transform.position + activeOffset;
         targetPos = inactivePos;
-
-        if(usePhysics) {
-            rb = GetComponent<Rigidbody>();
-            if(rb == null) { usePhysics = false; return; }
-            rb.isKinematic = true;
-        }
     }
 
     private void Update() {
-        if(!usePhysics) {
-            MovePosition();
-        }
-    }
-
-    private void FixedUpdate() {
-        if(usePhysics) {
-            MovePosition();
-        }
-    }
-
-    private void MovePosition() {
         if(parent != null) {
             if(_active && !parent.Active) {
                 Deactivate();
@@ -67,22 +45,12 @@ public class SwitchPositions : InteractableBase {
                 Vector3 dir = (targetPos - transform.position);
 
                 if(dir.magnitude <= (speed * Time.deltaTime)) {
-                    if(usePhysics) {
-                        rb.MovePosition(targetPos);
-                    } else {
-                        transform.position = targetPos;
-                    }
-
+                    transform.position = targetPos;
                     if(canDeactivate && instantDeactivate) {
                         Deactivate();
                     }
-
                 } else {
-                    if(usePhysics) {
-                        rb.MovePosition(transform.position + (dir.normalized * speed * Time.deltaTime));
-                    } else {
-                        transform.position += dir.normalized * speed * Time.deltaTime;
-                    }
+                    transform.position += dir.normalized * speed * Time.deltaTime;
                 }
             }
         }
