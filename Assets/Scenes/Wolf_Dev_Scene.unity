@@ -599,8 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1010225079946970586, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
-  components:
-  - Interact
+  components: []
 --- !u!1 &1024494254
 GameObject:
   m_ObjectHideFlags: 0

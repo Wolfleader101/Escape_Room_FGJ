@@ -14,14 +14,20 @@ public class Interact : MonoBehaviour
     /* Distance and size are just two settings for the jank crosshair in the middle of the screen.
        It just draws a tiny sphere gizmo in the centre of the screen as a crosshair.
        This is just to get an accurate idea of where I am aiming to test things. This will not be the final version of the crosshair. */
-    [SerializeField] private float distance;
-    [SerializeField] private float size;
+    [SerializeField] private float distance = 0.4f;
+    [SerializeField] private float size = 0.0025f;
 
     // This is a reference to the item you are currently holding.
     private HoldItem holdItem = null;
 
     // is interacting with object
     private bool _isInteracting;
+
+    private void Start() {
+        if(input == null){ 
+            input = GetComponent<PlayerInput>();
+        }
+    }
 
     void Update()
     {
