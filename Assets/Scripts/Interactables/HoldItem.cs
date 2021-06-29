@@ -10,7 +10,8 @@ public class HoldItem : InteractableBase {
 
     private Rigidbody rb;
     
-    private void OnValidate(){ // Makes sure that _interactable is never turned off in the inspector. If you do not want a holdable item, do not attach this script.
+    // Makes sure that _interactable is never turned off in the inspector. If you do not want a holdable item, do not attach this script.
+    private void OnValidate(){ 
         _interactable = true;
     }
 
@@ -33,13 +34,15 @@ public class HoldItem : InteractableBase {
         return;
     }
 
-    public override void Activate(){ // Disables gravity and rotation, enables object to move towards hold point.
+    // Disables gravity and rotation, enables object to move towards hold point.
+    public override void Activate(){ 
         _active = true;
         rb.useGravity = false;
         rb.freezeRotation = true;
     }
 
-    public override void Deactivate(){ // Deactivates holding, and reactivates gravity and rotation.
+    // Deactivates holding, and reactivates gravity and rotation.
+    public override void Deactivate(){ 
         _active = false;
         rb.useGravity = true;
         rb.freezeRotation = false;

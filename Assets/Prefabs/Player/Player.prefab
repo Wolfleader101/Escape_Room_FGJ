@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1010225079946970590}
   - component: {fileID: 1010225079946970584}
   - component: {fileID: 1010225079946970585}
+  - component: {fileID: 5373565084550059958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -149,7 +150,19 @@ MonoBehaviour:
     m_ActionId: f6b26180-8722-4a0b-854c-e2d67a51f9a3
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5373565084550059958}
+        m_TargetAssemblyTypeName: Interact, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a494728f-e134-41b9-bfdb-cd23c403f3e9
     m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
@@ -157,6 +170,22 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5373565084550059958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010225079946970586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ddc9ee3ea888440b829fe2e01b6261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 1010225079946970585}
+  maxReach: 5
+  distance: 0.4
+  size: 0.0025
 --- !u!1 &1010225080872578613
 GameObject:
   m_ObjectHideFlags: 0
