@@ -288,7 +288,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &144671494
 MeshCollider:
@@ -1061,6 +1061,10 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 478126020}
+    - target: {fileID: 5319233531210450878, guid: 6b445c40f24328b45bc6272ce3995521, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 478126020}
     - target: {fileID: 6913833636052422618, guid: 6b445c40f24328b45bc6272ce3995521, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -1090,6 +1094,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1334329613177629763, guid: ab56d7a4cc4dd254da50a75b71d4cebe, type: 3}
+      propertyPath: collisionCountOffset
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1334329613847133780, guid: ab56d7a4cc4dd254da50a75b71d4cebe, type: 3}
       propertyPath: m_RootOrder
       value: 7
