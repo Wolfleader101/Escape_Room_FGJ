@@ -19,7 +19,57 @@ public class CollisionInteract : MonoBehaviour {
     // Whether a collision with a button type interaction must occur from generally the top to be valid. Top is defined as the button's transform.up.
     [SerializeField] private bool buttonTypeMustCollideTop = true;
 
+    private bool isPlayer;
+
+    private void Start() {
+        isPlayer = (GetComponent<FirstPersonController>() != null);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit colliderHit) {
+        if(isPlayer) {
+            PlayerLogic(ref colliderHit);
+        }
+    }
+
     private void OnCollisionEnter(Collision collisionInfo) {
+        if(!isPlayer) {
+            HoldItemLogic(ref collisionInfo);
+        }
+    }
+
+    private void PlayerLogic(ref ControllerColliderHit colliderHit) {
+        GameObject obj = colliderHit.collider.gameObject;
+
+        InteractableBase[] interactables = obj.GetComponents<InteractableBase>();
+
+        // If interactables is null, obj is not an interactable. Exit.
+        if(interactables == null) { return; }
+
+        // Check whether button type interactions are valid.
+        bool buttonTypeInteractValid = !buttonTypeMustCollideTop || Vector3.Dot(colliderHit.normal, obj.transform.up) > 0.2f;
+
+        // If any of the valid interactables is found, run Interact() on all interactables on the colliding object.
+        bool valid = false;
+        foreach(InteractableBase interactable in interactables) {
+            valid |= buttonTypeInteractValid &&
+                     (button && interactable is Button) ||
+                     (pressurePlate && interactable is PressurePlate);
+
+            valid |= (movingPlatform && interactable is MovingPlatform) ||
+                     (switchPositions && interactable is SwitchPositions) ||
+                     (switchMaterials && interactable is SwitchMaterials);
+
+            if(valid) {
+                foreach(InteractableBase _interactable in interactables) {
+                    _interactable.Interact();
+                }
+
+                break;
+            }
+        }
+    }
+
+    private void HoldItemLogic(ref Collision collisionInfo) {
         GameObject obj = collisionInfo.collider.gameObject;
 
         InteractableBase[] interactables = obj.GetComponents<InteractableBase>();

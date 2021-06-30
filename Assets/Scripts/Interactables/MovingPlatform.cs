@@ -41,13 +41,12 @@ public class MovingPlatform : InteractableBase {
     }
 
     private void FixedUpdate() {
-        //oldPos = transform.position;
-
-        if(timer > 0f) {
-            timer -= Time.deltaTime;
-        }
-
         if(_active) {
+            if(timer > 0f) {
+                timer -= Time.deltaTime;
+                return;
+            }
+
             if(index >= positions.Length && direction == 1) {
                 if(repeatable) {
                     index = 0;
@@ -64,6 +63,8 @@ public class MovingPlatform : InteractableBase {
 
             if(dir.magnitude <= (speed * Time.deltaTime)) {
                 rb.MovePosition(positions[index]);
+                index += direction;
+                timer = waitTime;
                 Deactivate();
             } else {
                 rb.MovePosition(transform.position + (dir.normalized * speed * Time.deltaTime));
@@ -95,21 +96,17 @@ public class MovingPlatform : InteractableBase {
 
     public override void Activate() {
         _active = true;
-        index += direction;
     }
 
     public override void Deactivate() {
         _active = false;
-        oldPos = transform.position;
-        timer = waitTime;
     }
 
     /* The two ContextMenu function below are helper function for more easily creating the waypoints for the platform. To use each function, set the index variable
         in the inspector to the index of the position you want to work with. On the moving platform script, click the three dots icon and at the bottom you will see
-        the two ContextMenu functions. The first sets the objects current position to the position specified at the index value you selected. The second function
-        does the reverse. It sets the position at the specified index to be the objects position. This is useful for putting the object back to the first position
-        in the array. */
+        the two ContextMenu functions. */
 
+    // The first sets the objects current position to the position specified at the index value you selected.
     [ContextMenu("Set Position at Index to Obj Position")]
     private void SetPosToObjPos() {
         if(positions.Length == 0) { return; }
@@ -117,6 +114,7 @@ public class MovingPlatform : InteractableBase {
         positions[index] = transform.position;
     }
 
+    // It sets the position at the specified index to be the objects position. This is useful for putting the object back to the first position in the array.
     [ContextMenu("Set Obj Position to Position at Index")]
     private void SetObjPosToPos() {
         if(positions.Length == 0) { return; }

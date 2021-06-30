@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: 1
-  pressurePlate: 0
+  pressurePlate: 1
   movingPlatform: 0
   switchPositions: 0
   switchMaterials: 0

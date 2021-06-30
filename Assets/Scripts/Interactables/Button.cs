@@ -10,9 +10,6 @@ public class Button : InteractableBase {
     // Boolean field for whether the object can only be used once or pressed repeatedly.
     [SerializeField] private bool isSingleUse = false;
 
-    // List of objects this interactable will Activate() or Deactivate().
-    [SerializeField] private InteractableBase[] objects;
-
     public override void Interact() {
         if(!_active) {
             Activate();
@@ -24,19 +21,9 @@ public class Button : InteractableBase {
 
     public override void Activate() {
         _active = true;
-
-        // Activate() all linked objects.
-        foreach(InteractableBase obj in objects) {
-            obj.Activate();
-        }
     }
 
     public override void Deactivate() {
         _active = false;
-
-        // Deactivate() all linked objects.
-        foreach(InteractableBase obj in objects) {
-            obj.Deactivate();
-        }
     }
 }

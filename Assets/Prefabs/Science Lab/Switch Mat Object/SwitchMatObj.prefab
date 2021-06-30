@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3899395845892779899}
   - component: {fileID: 5782459312801340369}
   - component: {fileID: 7967608776537121321}
+  - component: {fileID: 1818465658482091559}
   m_Layer: 0
   m_Name: SwitchMatObj
   m_TagString: Untagged
@@ -113,3 +114,16 @@ MonoBehaviour:
   reversible: 1
   mat1: {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
   mat2: {fileID: 2100000, guid: 96308733fe99be644bc940594d422620, type: 2}
+--- !u!114 &1818465658482091559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978643211505870012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15c1b2a23f39e54d9eb492951d83e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}

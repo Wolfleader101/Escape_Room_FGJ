@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class SwitchPositions : InteractableBase {
 
-    /* This is the parent interaction of this interaction. If you set a parent, it will match its active state with its parent.
-        If no parent is set, this interaction will act like a regular interaction. */
-    [SerializeField] private InteractableBase parent;
-
     [SerializeField] private bool canDeactivate;
     [SerializeField] private bool instantDeactivate;
 
@@ -34,12 +30,6 @@ public class SwitchPositions : InteractableBase {
     }
 
     private void Update() {
-        if(parent != null) {
-            if(_active && !parent.Active) {
-                Deactivate();
-            }
-        }
-
         if(_active || canDeactivate) {
             if(transform.position != targetPos) {
                 Vector3 dir = (targetPos - transform.position);
@@ -57,18 +47,10 @@ public class SwitchPositions : InteractableBase {
     }
 
     public override void Interact() {
-        if(parent == null) {
-            if(!_active) {
-                Activate();
-            } else if(canDeactivate) {
-                Deactivate();
-            }
-        } else {
-            if(!_active && parent.Active) {
-                Activate();
-            } else if(_active && !parent.Active) {
-                Deactivate();
-            }
+        if(!_active) {
+            Activate();
+        } else if(canDeactivate) {
+            Deactivate();
         }
     }
 
