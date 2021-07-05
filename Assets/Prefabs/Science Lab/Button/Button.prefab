@@ -129,7 +129,7 @@ MonoBehaviour:
   _interactable: 1
   canDeactivate: 1
   instantDeactivate: 0
-  activeOffset: {x: 0, y: 0, z: 0}
+  activeOffset: {x: 0, y: -0.05, z: 0}
   speed: 0.5
 --- !u!114 &174169080039720183
 MonoBehaviour:

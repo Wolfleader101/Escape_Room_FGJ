@@ -11,7 +11,7 @@ public class Damage : InteractableBase {
     [SerializeField] private bool toggleable = false;
 
     // How much damage is applied per second.
-    [SerializeField] private float damagePerSec = 20f;
+    [SerializeField, Min(0f)] private float damagePerSec = 20f;
 
     private void OnValidate() {
         _interactable = false;
