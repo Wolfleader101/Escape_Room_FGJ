@@ -17,6 +17,8 @@ public class SwitchPositions : InteractableBase {
 
     private Vector3 targetPos;
 
+    private Vector3 rot;
+
     private void OnValidate() {
         if(!canDeactivate) {
             instantDeactivate = false;
@@ -27,6 +29,8 @@ public class SwitchPositions : InteractableBase {
         inactivePos = transform.position;
         activePos = transform.position + activeOffset;
         targetPos = inactivePos;
+
+        rot = transform.eulerAngles;
     }
 
     private void Update() {
@@ -42,8 +46,17 @@ public class SwitchPositions : InteractableBase {
                 } else {
                     transform.position += dir.normalized * speed * Time.deltaTime;
                 }
+            } else {
+                // Could affect the pressure plate's pos when colliding HoldItems into it. This prevents that.
+                transform.position = targetPos;
             }
+        } else {
+            // Could affect the pressure plate's pos when colliding HoldItems into it. This prevents that.
+            transform.position = targetPos;
         }
+
+        // Could affect the pressure plate's rot when colliding HoldItems into it. This prevents that.
+        transform.eulerAngles = rot;
     }
 
     public override void Interact() {

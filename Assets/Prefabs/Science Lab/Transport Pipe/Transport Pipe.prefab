@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6418336613514878501}
   - component: {fileID: 6418336613514878498}
   - component: {fileID: 6418336613514878491}
-  - component: {fileID: 6418336613514878493}
   - component: {fileID: 6418336613514878490}
   m_Layer: 0
   m_Name: Transport Pipe
@@ -1637,22 +1636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactable: 0
   speed: 20
---- !u!114 &6418336613514878493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418336613514878499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02168e8f5212c8341bf01ccfeebf7d7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactable: 0
-  reversible: 1
-  mat1: {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
-  mat2: {fileID: 2100000, guid: 96308733fe99be644bc940594d422620, type: 2}
 --- !u!114 &6418336613514878490
 MonoBehaviour:
   m_ObjectHideFlags: 0
