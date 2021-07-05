@@ -13,6 +13,10 @@ public class Health : MonoBehaviour {
     private bool _isPlayer;
     [HideInInspector] public bool IsPlayer => _isPlayer;
 
+    private void OnValidate() {
+        health = startingHealth;
+    }
+
     private void Start() {
         health = startingHealth;
         startingPos = transform.position;
@@ -21,6 +25,7 @@ public class Health : MonoBehaviour {
     }
 
     private void Update() {
+        // Respawn() the player if their health is zero.
         if(health <= 0) {
             Respawn();
         }
@@ -40,8 +45,18 @@ public class Health : MonoBehaviour {
 
     }
 
+    // Use this function in other scripts to damage the player.
     public void Damage(float damage) {
         health -= damage;
+    }
+
+    // This is another jank fake UI thing for overlaying red on the screen as the player gets damaged;
+    private void OnDrawGizmos() {
+        float opacity = Mathf.Pow((startingHealth - Mathf.Max(health, 0f)) / startingHealth, 3f);
+        Gizmos.color = new Vector4(1f, 0f, 0f, Mathf.SmoothStep(0f, 1f, opacity));
+        Camera cam = Camera.main;
+        Gizmos.DrawSphere(cam.transform.position + cam.transform.forward, 0.875f);
+        Gizmos.color = Color.white;
     }
 
 }

@@ -13,12 +13,14 @@ public class PressurePlate : InteractableBase {
     }
 
     private void Start() {
+        // Set specific Rigidbody settings explicitly.
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.isKinematic = true;
     }
 
     private void Update() {
+        // The pressure plates must Deactivate() itself, as CollideInteract only interacts with objects through OnCollisionEnter/OnControllerColliderHit(), not also on exit.
         if(_active && collisionCount <= 0) {
             Deactivate();
         }
