@@ -40,6 +40,7 @@ public class Health : MonoBehaviour {
         // Respawn() the player if their health is zero.
         if(health <= 0) {
             Respawn();
+            return;
         }
 
         // If object is not currently being damaged, regenerate the health back to full.
