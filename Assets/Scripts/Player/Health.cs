@@ -40,6 +40,12 @@ public class Health : MonoBehaviour {
             charController.enabled = false;
             transform.position = startingPos;
             charController.enabled = true;
+
+            Interact playerInteract = FindObjectOfType<Interact>();
+            if(playerInteract.holdItem != null) {
+                playerInteract.holdItem.Deactivate();
+                playerInteract.holdItem = null;
+            }
         } else {
             transform.position = startingPos;
 
