@@ -15,6 +15,8 @@ public class Health : MonoBehaviour {
 
     private void OnValidate() {
         health = startingHealth;
+
+        _isPlayer = (GetComponent<FirstPersonController>() != null);
     }
 
     private void Start() {
@@ -40,9 +42,17 @@ public class Health : MonoBehaviour {
             charController.enabled = true;
         } else {
             transform.position = startingPos;
+
+            Interact playerInteract = FindObjectOfType<Interact>();
+            if(playerInteract.holdItem != null && playerInteract.holdItem.gameObject == gameObject) {
+                playerInteract.holdItem.Deactivate();
+                playerInteract.holdItem = null;
+            }
+
+            if(TryGetComponent<Rigidbody>(out Rigidbody rb)) {
+                rb.velocity = Vector3.zero;
+            }
         }
-
-
     }
 
     // Use this function in other scripts to damage the player.
@@ -52,11 +62,13 @@ public class Health : MonoBehaviour {
 
     // This is another jank fake UI thing for overlaying red on the screen as the player gets damaged;
     private void OnDrawGizmos() {
-        float opacity = Mathf.Pow((startingHealth - Mathf.Max(health, 0f)) / startingHealth, 3f);
-        Gizmos.color = new Vector4(1f, 0f, 0f, Mathf.SmoothStep(0f, 1f, opacity));
-        Camera cam = Camera.main;
-        Gizmos.DrawSphere(cam.transform.position + cam.transform.forward, 0.875f);
-        Gizmos.color = Color.white;
+        if(_isPlayer) {
+            float opacity = Mathf.Pow((startingHealth - Mathf.Max(health, 0f)) / startingHealth, 3f);
+            Gizmos.color = new Vector4(1f, 0f, 0f, Mathf.SmoothStep(0f, 1f, opacity));
+            Camera cam = Camera.main;
+            Gizmos.DrawSphere(cam.transform.position + cam.transform.forward, 0.875f);
+            Gizmos.color = Color.white;
+        }
     }
 
 }

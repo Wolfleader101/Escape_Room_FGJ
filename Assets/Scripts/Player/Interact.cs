@@ -17,7 +17,7 @@ public class Interact : MonoBehaviour {
     [SerializeField] private float size = 0.0025f;
 
     // This is a reference to the item you are currently holding.
-    private HoldItem holdItem = null;
+    [HideInInspector] public HoldItem holdItem = null;
 
     // is interacting with object
     private bool _isInteracting;
