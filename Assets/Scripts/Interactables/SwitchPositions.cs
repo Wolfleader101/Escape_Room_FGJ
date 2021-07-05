@@ -27,7 +27,7 @@ public class SwitchPositions : InteractableBase {
 
     private void Start() {
         inactivePos = transform.position;
-        activePos = transform.position + activeOffset;
+        activePos = transform.position + (transform.right * activeOffset.x + transform.up * activeOffset.y + transform.forward * activeOffset.z);
         targetPos = inactivePos;
 
         rot = transform.eulerAngles;
