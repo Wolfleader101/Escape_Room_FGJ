@@ -10,12 +10,6 @@ public class Interact : MonoBehaviour {
     // This is the maximum distance an object can be before it becomes out of reach.
     [SerializeField] private float maxReach = 5f;
 
-    /* Distance and size are just two settings for the jank crosshair in the middle of the screen.
-       It just draws a tiny sphere gizmo in the centre of the screen as a crosshair.
-       This is just to get an accurate idea of where I am aiming to test things. This will not be the final version of the crosshair. */
-    [SerializeField] private float distance = 0.4f;
-    [SerializeField] private float size = 0.0025f;
-
     // This is a reference to the item you are currently holding.
     [HideInInspector] public HoldItem holdItem = null;
 
@@ -66,18 +60,6 @@ public class Interact : MonoBehaviour {
 
     private void LateUpdate() {
         _isInteracting = false;
-    }
-
-    private void OnDrawGizmos() {
-        // store main cam as a variable as calling Camera.main is expensive
-        var cam = Camera.main;
-
-        if(cam == null) return;
-
-        // The jank crosshair.
-        Gizmos.color = Color.black;
-        Gizmos.DrawSphere(cam.transform.position + (cam.transform.forward * distance), size);
-        Gizmos.color = Color.white;
     }
 
     public void OnInteract(InputAction.CallbackContext value) {
