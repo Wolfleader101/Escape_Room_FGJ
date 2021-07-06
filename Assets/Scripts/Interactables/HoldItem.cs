@@ -5,8 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class HoldItem : InteractableBase {
 
-    [SerializeField] private float distanceFromPlayer = 5;
-    [SerializeField] private float speed = 10;
+    [SerializeField] private float distanceFromPlayer = 5f;
+
+    [SerializeField] private float moveSpeed = 10f;
+
+    [SerializeField] private float rotateSpeed = 1f;
 
     private Rigidbody rb;
 
@@ -27,8 +30,12 @@ public class HoldItem : InteractableBase {
             Vector3 desiredPos = Camera.main.transform.position + (Camera.main.transform.forward * distanceFromPlayer);
 
             // Set the object's velocity as a direction towards that point, so that object moves towards point smoothly, instead of instantaneously.
-            rb.velocity = (desiredPos - transform.position) * speed;
+            rb.velocity = (desiredPos - transform.position) * moveSpeed;
         }
+    }
+
+    public void Rotate() {
+        rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + (Vector3.up * rotateSpeed * Time.deltaTime)));
     }
 
     public override void Interact() {

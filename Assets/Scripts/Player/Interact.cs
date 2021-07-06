@@ -16,6 +16,9 @@ public class Interact : MonoBehaviour {
     // is interacting with object
     private bool _isInteracting;
 
+    // Is rotating hold item (if currently holding one)
+    private bool _isRotatingItem;
+
     private void Start() {
         if(input == null) {
             input = GetComponent<PlayerInput>();
@@ -23,6 +26,10 @@ public class Interact : MonoBehaviour {
     }
 
     void Update() {
+        if(_isRotatingItem && holdItem != null) {
+            holdItem.Rotate();
+        }
+
         if(_isInteracting) {
             // If we are currently holding an object, call its Deactivate() function and set holdItem to null and return
             if(holdItem != null) {
@@ -64,5 +71,9 @@ public class Interact : MonoBehaviour {
 
     public void OnInteract(InputAction.CallbackContext value) {
         _isInteracting = value.canceled;
+    }
+
+    public void OnRotateItem(InputAction.CallbackContext value) {
+        _isRotatingItem = value.performed;
     }
 }
