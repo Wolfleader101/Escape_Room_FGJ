@@ -9,7 +9,7 @@ public class Health : MonoBehaviour {
 
     [SerializeField] private bool allowHealthRegen = true;
 
-    [SerializeField] private float regenRatePerSec = 100f;
+    [SerializeField] private float regenRatePerSec = 50f;
 
     // This element controls the fade to red for the player. You can leave this field empty if not being attached to the player.
     [SerializeField] private Image healthFadeUI;
@@ -50,7 +50,7 @@ public class Health : MonoBehaviour {
 
         // Set the screen fade UI element
         if(_isPlayer && healthFadeUI != null) {
-            float opacity = Mathf.Pow((startingHealth - Mathf.Max(health, 0f)) / startingHealth, 3f);
+            float opacity = Mathf.Pow((startingHealth - Mathf.Max(health, 0f)) / startingHealth, 2f);
             healthFadeUI.color = new Vector4(1f, 0f, 0f, Mathf.SmoothStep(0f, 1f, opacity));
         }
 

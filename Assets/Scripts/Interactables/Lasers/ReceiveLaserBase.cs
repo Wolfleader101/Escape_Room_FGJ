@@ -2,14 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ReceiveLaserBase : MonoBehaviour {
+public abstract class ReceiveLaserBase : InteractableBase {
 
-    public bool receivedLaser = false;
+    [HideInInspector] public bool receivedLaser = false;
 
-    public Vector3 hitPoint;
+    [HideInInspector] public Vector3 hitPoint;
 
     private void LateUpdate() {
-        receivedLaser = false;
+        Deactivate();
     }
 
+    public override void Interact() {
+        return;
+    }
+
+    public override void Activate() {
+        _active = true;
+        receivedLaser = true;
+    }
+
+    public override void Deactivate() {
+        _active = false;
+        receivedLaser = false;
+    }
 }
