@@ -140,4 +140,12 @@ public class LaserEmitter : InteractableBase {
     public override void Deactivate() {
         _active = false;
     }
+
+    // This is a helper script to allow you to view the path of the laser in the scene view, without having to play the game. This allows you to position objects properly.
+    [ContextMenu("Fire Laser")]
+    private void FireLaser() {
+        if(lineRenderer == null) { lineRenderer = GetComponent<LineRenderer>(); }
+        SetupLaser();
+        EmitLaser();
+    }
 }
