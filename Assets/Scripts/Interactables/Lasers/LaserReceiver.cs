@@ -6,12 +6,23 @@ public class LaserReceiver : InteractableBase {
 
     [HideInInspector] public Vector3 hitPoint;
 
+    [HideInInspector] public Vector3 hitNormal;
+
     [HideInInspector] public float damagePerSec;
 
     [HideInInspector] public bool damagePlayerOnly;
 
+    [HideInInspector] public Vector3 incomingDir;
+
+    [HideInInspector] public int cutoff;
+
+    private int stepSinceInactive = 0;
+
     private void LateUpdate() {
-        Deactivate();
+        stepSinceInactive++;
+        if(stepSinceInactive >= 2) {
+            Deactivate();
+        }
     }
 
     public override void Interact() {
@@ -20,6 +31,7 @@ public class LaserReceiver : InteractableBase {
 
     public override void Activate() {
         _active = true;
+        stepSinceInactive = 0;
     }
 
     public override void Deactivate() {

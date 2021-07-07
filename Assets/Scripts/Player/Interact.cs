@@ -42,7 +42,7 @@ public class Interact : MonoBehaviour {
             // Fire a ray in the direction we are looking, up to maximum reach.
             Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
 
-            if(Physics.Raycast(ray, out RaycastHit hitInfo, maxReach, -1, QueryTriggerInteraction.Ignore)) {
+            if(Physics.Raycast(ray, out RaycastHit hitInfo, maxReach, ~(1 << LayerMask.NameToLayer("Player")), QueryTriggerInteraction.Ignore)) {
                 // If we hit a holdable item, save a reference to it and Activate() it.
                 if(hitInfo.collider.TryGetComponent<HoldItem>(out HoldItem item)) {
                     holdItem = item;
