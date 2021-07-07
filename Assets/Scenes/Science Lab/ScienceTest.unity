@@ -872,7 +872,7 @@ MonoBehaviour:
   _interactable: 0
   startActive: 1
   damagePlayerOnly: 1
-  damagePerSec: 20
+  damagePerSec: 50
   maxLaserAdjustAmt: 200
 --- !u!114 &374608151
 MonoBehaviour:

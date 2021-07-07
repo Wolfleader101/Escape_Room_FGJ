@@ -11,7 +11,7 @@ public class LaserEmitter : InteractableBase {
     // Whether the laser only damages the player.
     [SerializeField] private bool damagePlayerOnly = true;
 
-    [SerializeField] private float damagePerSec = 20f;
+    [SerializeField] private float damagePerSec = 50f;
 
     [SerializeField] private int maxLaserAdjustAmt = 10;
 
