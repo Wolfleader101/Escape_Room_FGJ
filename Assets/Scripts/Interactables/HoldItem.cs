@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class HoldItem : InteractableBase {
 
-    [SerializeField] private float distanceFromPlayer = 5f;
+    [SerializeField] private float distanceFromPlayer = 3f;
 
     [SerializeField] private float moveSpeed = 10f;
 
-    [SerializeField] private float rotateSpeed = 1f;
+    [SerializeField] private float rotateSpeed = 100f;
 
     private Rigidbody rb;
 
