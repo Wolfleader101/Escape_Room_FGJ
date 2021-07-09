@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Science Lab/ScienceTest.unity
     guid: eeeea2ba5f87e8a41a81060bc24d4e26
   - enabled: 1
-    path: Assets/Scenes/Science Lab/SL_Level_01.unity
+    path: Assets/Scenes/Science Lab/SL_Level_Navigate.unity
     guid: bae9bd969ea40a140aab2c397c8a6a9f
   m_configObjects: {}

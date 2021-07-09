@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3272986407694270158}
   - component: {fileID: 8110181255831851483}
   m_Layer: 0
-  m_Name: Reflector
+  m_Name: Reflector Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

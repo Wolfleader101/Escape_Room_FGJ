@@ -48,7 +48,7 @@ public class KillZone : InteractableBase {
         _active = false;
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmosSelected() {
         if(!TryGetComponent<Collider>(out Collider collider)) { return; }
 
         Gizmos.color = new Vector4(1f, 0f, 0f, 0.25f);

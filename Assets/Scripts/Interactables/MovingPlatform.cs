@@ -37,7 +37,7 @@ public class MovingPlatform : InteractableBase {
     private void Start() {
         // Set specific Rigidbody settings explicitly.
         rb = GetComponent<Rigidbody>();
-        rb.interpolation = RigidbodyInterpolation.Extrapolate;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.isKinematic = true;
     }
 
@@ -134,7 +134,7 @@ public class MovingPlatform : InteractableBase {
     }
 
     // This function draws the Gizmo points and lines to help visualise the path of the platform.
-    private void OnDrawGizmos() {
+    private void OnDrawGizmosSelected() {
         if(positions.Length == 0) { return; }
 
         for(int i = 0; i < positions.Length; i++) {
