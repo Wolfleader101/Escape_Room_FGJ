@@ -38,6 +38,10 @@ public class HoldItem : InteractableBase {
         rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + (Vector3.up * rotation * Time.deltaTime)));
     }
 
+    public void SetHoldDistance(float distance) {
+        distanceFromPlayer = Mathf.Max(minMaxDistanceFromPlayer.x, Mathf.Min(distance, minMaxDistanceFromPlayer.y));
+    }
+
     public void AdjustHoldDistance(float distance) {
         distanceFromPlayer = Mathf.Max(minMaxDistanceFromPlayer.x, Mathf.Min(distanceFromPlayer + distance * Time.deltaTime, minMaxDistanceFromPlayer.y));
     }

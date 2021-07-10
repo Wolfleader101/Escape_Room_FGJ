@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 1
-  minMaxDistanceFromPlayer: {x: 2, y: 5}
+  minMaxDistanceFromPlayer: {x: 1.75, y: 5}
   distanceFromPlayer: 3
   moveSpeed: 10
 --- !u!114 &3272986407694270158
