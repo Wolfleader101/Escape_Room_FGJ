@@ -241,12 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 0
-  hitPoint: {x: 0, y: 0, z: 0}
-  hitNormal: {x: 0, y: 0, z: 0}
-  damagePerSec: 0
-  damagePlayerOnly: 0
-  incomingDir: {x: 0, y: 0, z: 0}
-  cutoff: 0
+  canDeactivate: 1
 --- !u!114 &7288426474426532477
 MonoBehaviour:
   m_ObjectHideFlags: 0

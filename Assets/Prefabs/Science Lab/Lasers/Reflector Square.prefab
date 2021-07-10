@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3272986407694270156}
   - component: {fileID: 3272986407694270157}
   - component: {fileID: 3272986407694270158}
+  - component: {fileID: 8130436258455195925}
   - component: {fileID: 8110181255831851483}
   m_Layer: 0
   m_Name: Reflector Square
@@ -129,9 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 1
+  minMaxDistanceFromPlayer: {x: 2, y: 5}
   distanceFromPlayer: 3
   moveSpeed: 10
-  rotateSpeed: 100
 --- !u!114 &3272986407694270158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,22 @@ MonoBehaviour:
   switchPositions: 0
   switchMaterials: 0
   buttonTypeMustCollideTop: 1
+--- !u!114 &8130436258455195925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3272986407694270159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea4d84eedd400f44b79cbd54d1b3012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  allowHealthRegen: 1
+  regenRatePerSec: 50
+  healthFadeUI: {fileID: 0}
 --- !u!114 &8110181255831851483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,4 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d68f6355cc42c4e98b326fb318ee59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserAdjustType: 0
+  _laserAdjustType: 0

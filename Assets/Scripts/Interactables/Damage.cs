@@ -10,8 +10,11 @@ public class Damage : InteractableBase {
     // Whether the damage zone can be disabled.
     [SerializeField] private bool toggleable = false;
 
-    // Whether the damage zone will only damage the player.
-    [SerializeField] private bool playerOnly = true;
+    // Whether the damage zone can damage the player.
+    [SerializeField] private bool damagePlayer = true;
+
+    // Whether the damage zone can damage all other health scripts.
+    [SerializeField] private bool damageOther = true;
 
     // How much damage is applied per second.
     [SerializeField, Min(0f)] private float damagePerSec = 20f;
@@ -28,7 +31,7 @@ public class Damage : InteractableBase {
     private void OnTriggerStay(Collider collider) {
         if(_active) {
             if(collider.gameObject.TryGetComponent<Health>(out Health health)) {
-                if(!health.IsPlayer && playerOnly) { return; }
+                if((health.IsPlayer && !damagePlayer) || (!health.IsPlayer && !damageOther)) { return; }
 
                 health.Damage(damagePerSec * Time.deltaTime);
             }

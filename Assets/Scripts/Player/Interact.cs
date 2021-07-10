@@ -10,6 +10,12 @@ public class Interact : MonoBehaviour {
     // This is the maximum distance an object can be before it becomes out of reach.
     [SerializeField] private float maxReach = 5f;
 
+    // The speed of rotating a holdable item.
+    [SerializeField] private float rotateSpeed = 100f;
+
+    // The speed of changing a holdable item's distance point.
+    [SerializeField] private float distChangeSpeed = 1f;
+
     // This is a reference to the item you are currently holding.
     [HideInInspector] public HoldItem holdItem = null;
 
@@ -18,6 +24,11 @@ public class Interact : MonoBehaviour {
 
     // Is rotating hold item (if currently holding one)
     private bool _isRotatingItem;
+    private float _rotateDir;
+
+    // Is changing hold item distance (if currently holding one)
+    private bool _isDistChangeItem;
+    private float _distanceAdjust;
 
     private void Start() {
         if(input == null) {
@@ -26,8 +37,9 @@ public class Interact : MonoBehaviour {
     }
 
     void Update() {
-        if(_isRotatingItem && holdItem != null) {
-            holdItem.Rotate();
+        if(holdItem != null) {
+            if(_isRotatingItem) { holdItem.Rotate(_rotateDir * rotateSpeed); }
+            if(_isDistChangeItem) { holdItem.AdjustHoldDistance(_distanceAdjust * distChangeSpeed); }
         }
 
         if(_isInteracting) {
@@ -75,5 +87,11 @@ public class Interact : MonoBehaviour {
 
     public void OnRotateItem(InputAction.CallbackContext value) {
         _isRotatingItem = value.performed;
+        _rotateDir = value.ReadValue<float>();
+    }
+
+    public void OnDistanceChangeItem(InputAction.CallbackContext value) {
+        _isDistChangeItem = value.performed;
+        _distanceAdjust = value.ReadValue<float>();
     }
 }

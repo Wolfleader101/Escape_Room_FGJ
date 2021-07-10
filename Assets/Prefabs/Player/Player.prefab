@@ -163,9 +163,37 @@ MonoBehaviour:
     m_ActionId: a494728f-e134-41b9-bfdb-cd23c403f3e9
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5373565084550059958}
+        m_TargetAssemblyTypeName: Interact, Assembly-CSharp
+        m_MethodName: OnRotateItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 99f1248d-c5bb-445f-9e66-c913240be678
     m_ActionName: Player/RotateHoldItem[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5373565084550059958}
+        m_TargetAssemblyTypeName: Interact, Assembly-CSharp
+        m_MethodName: OnDistanceChangeItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b820ffe1-62cf-4de9-9bee-e8efaac889c4
+    m_ActionName: Player/HoldItemDistance
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -185,6 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1010225079946970585}
   maxReach: 5
+  rotateSpeed: 100
+  distChangeSpeed: 1
   holdItem: {fileID: 0}
 --- !u!1 &1010225081504706547
 GameObject:
@@ -243,7 +273,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
