@@ -83,8 +83,7 @@ public class EnemyAI : MonoBehaviour
         {
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-
-           
+            player.GetComponent<Health>().Damage(20);
         }
 
         transform.LookAt(player);
