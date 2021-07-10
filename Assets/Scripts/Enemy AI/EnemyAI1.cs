@@ -24,10 +24,13 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private GameObject health;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();  
+        health = player.GetComponent<Health>();
     }
 
     private void Update()
@@ -60,7 +63,7 @@ public class EnemyAI : MonoBehaviour
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position, transform.position.z + randomZ);
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
@@ -80,15 +83,16 @@ public class EnemyAI : MonoBehaviour
         {
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+
+           
         }
 
         transform.LookAt(player);
 
         if(!alreadyAttacked) 
         {
-            /// My attack code goes from here
-                // if player attacked - remove damage points
-            /// to here
+           
+            player.Damage(20);
         }
     }
 
