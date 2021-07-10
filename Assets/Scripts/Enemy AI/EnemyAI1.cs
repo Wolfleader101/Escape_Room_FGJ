@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();  
-        health = player.GetComponent<Health>();
+        //health = player.GetComponent<Health>();
     }
 
     private void Update()
@@ -92,7 +92,6 @@ public class EnemyAI : MonoBehaviour
         if(!alreadyAttacked) 
         {
            
-            player.Damage(20);
         }
     }
 
