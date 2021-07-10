@@ -55,7 +55,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_ActionId
@@ -74,7 +74,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6104514195291654352}
+    - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6104514195291654352}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
@@ -82,15 +90,31 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRotateItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDistanceChangeItem
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Interact, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Interact, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010225079946970585, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1010225079946970586, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
@@ -148,6 +172,14 @@ PrefabInstance:
     - target: {fileID: 1010225081504706550, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373565084550059958, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: maxReach
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373565084550059958, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}
+      propertyPath: distChangeSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d35830255f4bc734fae2d2650a7a606a, type: 3}

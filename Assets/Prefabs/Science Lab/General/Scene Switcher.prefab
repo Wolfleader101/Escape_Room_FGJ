@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1846918472463866619
+--- !u!1 &467371263789194892
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,56 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1846918472463866623}
-  - component: {fileID: 1846918472463866616}
-  - component: {fileID: 1846918472463866618}
+  - component: {fileID: 467371263789194895}
+  - component: {fileID: 467371263789194894}
+  - component: {fileID: 467371263789194893}
   m_Layer: 0
-  m_Name: Damage Zone
+  m_Name: Scene Switcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1846918472463866623
+--- !u!4 &467371263789194895
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846918472463866619}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.09, y: 1.64, z: -11.64}
+  m_GameObject: {fileID: 467371263789194892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5792308, y: 1.5831598, z: -19.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1846918472463866616
+--- !u!65 &467371263789194894
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846918472463866619}
+  m_GameObject: {fileID: 467371263789194892}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 4, y: 5, z: 54}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1846918472463866618
+--- !u!114 &467371263789194893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846918472463866619}
+  m_GameObject: {fileID: 467371263789194892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b2a63bc6b06d0d48afbfae375b729e5, type: 3}
+  m_Script: {fileID: 11500000, guid: c6b3055a09625ae4aa899e26a3750a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactable: 0
-  startActive: 1
-  toggleable: 0
-  damagePerSec: 20
+  nextScene: 
+  screenFadeUI: {fileID: 0}

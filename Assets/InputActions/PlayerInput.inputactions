@@ -39,9 +39,17 @@
                 },
                 {
                     "name": "RotateHoldItem",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "99f1248d-c5bb-445f-9e66-c913240be678",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "HoldItemDistance",
+                    "type": "Value",
+                    "id": "b820ffe1-62cf-4de9-9bee-e8efaac889c4",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -136,13 +144,46 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "9643c6d9-ae2c-4725-89db-c2b2db84efe1",
+                    "name": "QR",
+                    "id": "61125323-0199-43fa-94df-5bd38ba07b57",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateHoldItem",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "40d824a3-1910-4561-8cd7-55bf6dbee334",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateHoldItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "9e72b53f-864a-47fc-9458-d25f3af8d106",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "RotateHoldItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1a04317e-624a-4652-8e8a-b1ef90bd3b95",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldItemDistance",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

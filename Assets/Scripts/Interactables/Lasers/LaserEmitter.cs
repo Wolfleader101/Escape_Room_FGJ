@@ -16,7 +16,7 @@ public class LaserEmitter : InteractableBase {
     [SerializeField] private bool damagePlayerOnly = true;
 
     // How much damage is applied to the player over a second.
-    [SerializeField] private float damagePerSec = 50f;
+    [SerializeField] private float damagePerSec = 200f;
 
     // The maximum amount of LaserAdjust objects the laser will interact with before terminating.
     [SerializeField] private int maxLaserAdjustAmt = 100;
@@ -65,7 +65,7 @@ public class LaserEmitter : InteractableBase {
 
         // This while loop will continue until either the laser has found an end point or the laser has reached its max amount of direction adjustments.
         while(!finished && index < maxLaserAdjustAmt) {
-            if(Physics.Raycast(lineRenderer.GetPosition(lineRenderer.positionCount - 1), dir, out RaycastHit hitInfo)) {
+            if(Physics.Raycast(lineRenderer.GetPosition(lineRenderer.positionCount - 1), dir, out RaycastHit hitInfo, 1000f, -1, QueryTriggerInteraction.Ignore)) {
                 // If we hit something with the raycast, add a new point in the laser path at the point of collision.
                 lineRenderer.positionCount++;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, hitInfo.point);
@@ -87,7 +87,7 @@ public class LaserEmitter : InteractableBase {
                         /* If it is a Refract object, set a new laser path point to the middle of the face of the object which is facing in the direction of
                             the Refract objects forward direction. */
                         lineRenderer.positionCount++;
-                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, obj.transform.position + obj.transform.forward * obj.GetComponent<Collider>().bounds.extents.z);
+                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, new Vector3(obj.transform.position.x, hitInfo.point.y, obj.transform.position.z) + obj.transform.forward * obj.GetComponent<Collider>().bounds.extents.z);
 
                         // Set the laser's new direction to the forward direction of the Refract object.
                         dir = obj.transform.forward;

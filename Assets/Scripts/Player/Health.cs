@@ -17,6 +17,7 @@ public class Health : MonoBehaviour {
     private float health;
 
     private Vector3 startingPos;
+    private Vector3 startingRot;
 
     private bool hasBeenDamaged = false;
 
@@ -32,6 +33,7 @@ public class Health : MonoBehaviour {
     private void Start() {
         health = startingHealth;
         startingPos = transform.position;
+        startingRot = transform.eulerAngles;
 
         _isPlayer = (GetComponent<FirstPersonController>() != null);
     }
@@ -66,6 +68,7 @@ public class Health : MonoBehaviour {
 
             charController.enabled = false;
             transform.position = startingPos;
+            transform.eulerAngles = startingRot;
             charController.enabled = true;
 
             // Deactivate() held item and unlink it from the player.
@@ -76,6 +79,7 @@ public class Health : MonoBehaviour {
             }
         } else {
             transform.position = startingPos;
+            transform.eulerAngles = startingRot;
 
             // Deactivate() held item and unlink it from the player if this object is the current held object.
             Interact playerInteract = FindObjectOfType<Interact>();
