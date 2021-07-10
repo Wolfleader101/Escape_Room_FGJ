@@ -10,7 +10,7 @@ public abstract class InteractableBase : MonoBehaviour {
     public bool Interactable => _interactable;
 
     // This defines the current state of the variable, whether it is in active or inactive mode.
-    protected bool _active = false;
+    [SerializeField] protected bool _active = false;
     public bool Active => _active;
 
     /*  These are the three functions that need to be implemented in all classes that inherit from this class.

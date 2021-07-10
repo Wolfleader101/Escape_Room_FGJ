@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 0
+  _active: 0
   canDeactivate: 1
 --- !u!114 &7288426474426532477
 MonoBehaviour:
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 0
+  _active: 0
   reversible: 1
   mat1: {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
   mat2: {fileID: 2100000, guid: c4713a4dcbef5034cb0b7f85076527bb, type: 2}

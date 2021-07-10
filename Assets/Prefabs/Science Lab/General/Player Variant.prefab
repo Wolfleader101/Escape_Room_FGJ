@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6ec14e427cd549be886a2c764d477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: 1
+  button: 0
   pressurePlate: 1
   movingPlatform: 0
   switchPositions: 0

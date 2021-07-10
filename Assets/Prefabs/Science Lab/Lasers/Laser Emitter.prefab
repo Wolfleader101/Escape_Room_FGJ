@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 0
-  startActive: 1
+  _active: 1
   laserThickness: 0.04
   damagePlayerOnly: 1
   damagePerSec: 100
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 0
+  _active: 0
   reversible: 1
   mat1: {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
   mat2: {fileID: 2100000, guid: c4713a4dcbef5034cb0b7f85076527bb, type: 2}
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 5991010925043154539}
+  invert: 0
 --- !u!1 &5991010925406921798
 GameObject:
   m_ObjectHideFlags: 0

@@ -79,8 +79,8 @@ public class MovingPlatform : InteractableBase {
                 rb.MovePosition(transform.position + (dir.normalized * speed * Time.deltaTime));
             }
         } else if(continuous) {
-            // This essentially reactivates the platform, as long as the timer is at 0.
-            Interact();
+            // This reactivates the platform.
+            Activate();
         }
 
         oldPos = transform.position;
