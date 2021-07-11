@@ -6708,6 +6708,10 @@ PrefabInstance:
       value: End Room
       objectReference: {fileID: 0}
     - target: {fileID: 2713173567772792150, guid: e6faeb7c2cf1041428a3a9af812c080a, type: 3}
+      propertyPath: nextScene
+      value: SL_Level_Race
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713173567772792150, guid: e6faeb7c2cf1041428a3a9af812c080a, type: 3}
       propertyPath: screenFadeUI
       value: 
       objectReference: {fileID: 526967070}
