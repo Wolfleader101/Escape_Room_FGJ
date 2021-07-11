@@ -7,6 +7,8 @@ public class ParentStateMatch : MonoBehaviour {
 
     [SerializeField] private InteractableBase parent;
 
+    [SerializeField] private bool invert = false;
+
     private InteractableBase[] interactables;
 
     void Start() {
@@ -14,11 +16,11 @@ public class ParentStateMatch : MonoBehaviour {
     }
 
     void Update() {
-        if(interactables != null) {
+        if(parent != null && interactables != null) {
             foreach(InteractableBase interactable in interactables) {
-                if(parent.Active && !interactable.Active) {
+                if((parent.Active ^ invert) && !interactable.Active) {
                     interactable.Activate();
-                } else if(!parent.Active && interactable.Active) {
+                } else if((!parent.Active ^ invert) && interactable.Active) {
                     interactable.Deactivate();
                 }
             }

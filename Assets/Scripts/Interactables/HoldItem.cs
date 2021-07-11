@@ -5,17 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class HoldItem : InteractableBase {
 
+    [SerializeField] private Vector2 minMaxDistanceFromPlayer = new Vector2(1f, 5f);
     [SerializeField] private float distanceFromPlayer = 3f;
 
     [SerializeField] private float moveSpeed = 10f;
-
-    [SerializeField] private float rotateSpeed = 100f;
 
     private Rigidbody rb;
 
     // Makes sure that _interactable is never turned off in the inspector. If you do not want a holdable item, do not attach this script.
     private void OnValidate() {
         _interactable = true;
+        minMaxDistanceFromPlayer = new Vector2(Mathf.Max(minMaxDistanceFromPlayer.x, 1f), Mathf.Max(minMaxDistanceFromPlayer.y, distanceFromPlayer));
     }
 
     private void Start() {
@@ -34,8 +34,16 @@ public class HoldItem : InteractableBase {
         }
     }
 
-    public void Rotate() {
-        rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + (Vector3.up * rotateSpeed * Time.deltaTime)));
+    public void Rotate(float rotation) {
+        rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + (Vector3.up * rotation * Time.deltaTime)));
+    }
+
+    public void SetHoldDistance(float distance) {
+        distanceFromPlayer = Mathf.Max(minMaxDistanceFromPlayer.x, Mathf.Min(distance, minMaxDistanceFromPlayer.y));
+    }
+
+    public void AdjustHoldDistance(float distance) {
+        distanceFromPlayer = Mathf.Max(minMaxDistanceFromPlayer.x, Mathf.Min(distanceFromPlayer + distance * Time.deltaTime, minMaxDistanceFromPlayer.y));
     }
 
     public override void Interact() {

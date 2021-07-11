@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 1
+  _active: 0
   reversible: 1
   mat1: {fileID: 2100000, guid: 5fc83533aba637e469dac577edf52355, type: 2}
   mat2: {fileID: 2100000, guid: 96308733fe99be644bc940594d422620, type: 2}
@@ -127,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  invert: 0
