@@ -19,6 +19,8 @@ public class Interact : MonoBehaviour {
     // This is a reference to the item you are currently holding.
     [HideInInspector] public HoldItem holdItem = null;
 
+    private Camera cam;
+
     // is interacting with object
     private bool _isInteracting;
 
@@ -34,6 +36,8 @@ public class Interact : MonoBehaviour {
         if(input == null) {
             input = GetComponent<PlayerInput>();
         }
+
+        cam = Camera.main;
     }
 
     void Update() {
@@ -52,13 +56,16 @@ public class Interact : MonoBehaviour {
             }
 
             // Fire a ray in the direction we are looking, up to maximum reach.
-            Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
+            Ray ray = cam.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
 
             if(Physics.Raycast(ray, out RaycastHit hitInfo, maxReach, ~(1 << LayerMask.NameToLayer("Player")), QueryTriggerInteraction.Ignore)) {
                 // If we hit a holdable item, save a reference to it and Activate() it.
                 if(hitInfo.collider.TryGetComponent<HoldItem>(out HoldItem item)) {
                     holdItem = item;
                     holdItem.Activate();
+
+                    float dist = (holdItem.transform.position - cam.transform.position).magnitude;
+                    holdItem.SetHoldDistance(dist);
 
                     return;
                 }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Damage : InteractableBase {
 
-    // Whether the zone should start as active.
-    [SerializeField] private bool startActive = true;
-
     // Whether the damage zone can be disabled.
     [SerializeField] private bool toggleable = false;
 
@@ -24,7 +21,6 @@ public class Damage : InteractableBase {
     }
 
     private void Start() {
-        _active = startActive;
         GetComponent<Collider>().isTrigger = true;
     }
 

@@ -114,4 +114,4 @@ MonoBehaviour:
   toggleable: 0
   damagePlayer: 1
   damageOther: 1
-  damagePerSec: 400
+  damagePerSec: 1000

@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: 1
+  minMaxDistanceFromPlayer: {x: 1.75, y: 5}
   distanceFromPlayer: 3
   moveSpeed: 10
-  rotateSpeed: 100
 --- !u!114 &7828218672305588103
 MonoBehaviour:
   m_ObjectHideFlags: 0

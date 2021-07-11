@@ -6,9 +6,6 @@ using UnityEditor;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserEmitter : InteractableBase {
 
-    // Whether the laser should start in an active start.
-    [SerializeField] private bool startActive = true;
-
     // The thickness of the laser. This should be kept as a uniform value across a theme, for consistency.
     [SerializeField] private float laserThickness = 0.04f;
 
@@ -33,8 +30,6 @@ public class LaserEmitter : InteractableBase {
         lineRenderer = GetComponent<LineRenderer>();
         SetupLaser();
         lineRenderer.numCapVertices = lineRenderer.numCornerVertices = 5;
-
-        _active = startActive;
     }
 
     private void Update() {

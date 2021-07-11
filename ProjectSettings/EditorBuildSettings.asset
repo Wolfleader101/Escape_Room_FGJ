@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Science Lab/ScienceTest.unity
-    guid: eeeea2ba5f87e8a41a81060bc24d4e26
+    path: Assets/Scenes/LevelSelect.unity
+    guid: a82f4d8677462fc4386c4efe3477cd21
   - enabled: 1
     path: Assets/Scenes/Science Lab/SL_Level_Navigate.unity
     guid: bae9bd969ea40a140aab2c397c8a6a9f
+  - enabled: 1
+    path: Assets/Scenes/Science Lab/SL_Level_Race.unity
+    guid: 0e8d4c0d91b2df3449980e1280e7a06c
   m_configObjects: {}
