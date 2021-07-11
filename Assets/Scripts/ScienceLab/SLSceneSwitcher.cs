@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SLSceneSwitcher : MonoBehaviour {
+public class SLSceneSwitcher : InteractableBase {
 
     [SerializeField] private string nextScene;
     [SerializeField] private Image screenFadeUI;
@@ -32,9 +32,23 @@ public class SLSceneSwitcher : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider collider) {
-        if(collider.gameObject.TryGetComponent<FirstPersonController>(out FirstPersonController _)) {
-            switchScenes = true;
+    private void OnTriggerStay(Collider collider) {
+        if(_active) {
+            if(collider.gameObject.TryGetComponent<FirstPersonController>(out FirstPersonController _)) {
+                switchScenes = true;
+            }
         }
+    }
+
+    public override void Interact() {
+        return;
+    }
+
+    public override void Activate() {
+        _active = true;
+    }
+
+    public override void Deactivate() {
+        _active = false;
     }
 }
