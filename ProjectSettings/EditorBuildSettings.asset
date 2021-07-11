@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Science Lab/SL_Level_Race.unity
     guid: 0e8d4c0d91b2df3449980e1280e7a06c
+  - enabled: 1
+    path: Assets/Scenes/Prison/Prison.unity
+    guid: 5126360edfb03804fb93f91eb4bd873c
   m_configObjects: {}
