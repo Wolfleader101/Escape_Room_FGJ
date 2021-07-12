@@ -35,42 +35,52 @@ public class MovingPlatform : InteractableBase {
     }
 
     private void Start() {
+        // Set specific Rigidbody settings explicitly.
         rb = GetComponent<Rigidbody>();
-        rb.interpolation = RigidbodyInterpolation.Extrapolate;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.isKinematic = true;
     }
 
     private void FixedUpdate() {
         if(_active) {
+            // If timer is active (is not 0), reduce timer value and do not run any extra code.
             if(timer > 0f) {
                 timer -= Time.deltaTime;
                 return;
             }
 
+            // If index position is greater than accessible points and is travelling forward:
             if(index >= positions.Length && direction == 1) {
                 if(repeatable) {
+                    // Loop index back to start.
                     index = 0;
                     startPos = transform.position;
                 } else {
+                    // Reverse travel direction and set index to previous point.
                     direction = -1;
                     index = Mathf.Max(positions.Length - 2, 0);
                 }
-            } else if(index == 0 && direction == -1) {
+            } else if(index <= 0 && direction == -1) {
+                // If travelling in reverse and we have hit the start, set direction to forward again and we will move that direction on next index change.
                 direction = 1;
             }
 
+            // Calculate the travel direction to next point. The point is not normalised so we can also get the distance to the next point (dir.magnitude).
             Vector3 dir = (positions[index] - transform.position);
 
+            // If the distance we want to travel will overshoot the point, simply just set the platform's position to the point.
             if(dir.magnitude <= (speed * Time.deltaTime)) {
                 rb.MovePosition(positions[index]);
                 index += direction;
                 timer = waitTime;
                 Deactivate();
             } else {
+                // Move in the direction of the point, at the speed of 'speed'.
                 rb.MovePosition(transform.position + (dir.normalized * speed * Time.deltaTime));
             }
         } else if(continuous) {
-            Interact();
+            // This reactivates the platform.
+            Activate();
         }
 
         oldPos = transform.position;
@@ -79,6 +89,7 @@ public class MovingPlatform : InteractableBase {
     private void OnTriggerStay(Collider collider) {
         GameObject obj = collider.gameObject;
 
+        // This moves objects on the platform, using their respective correct move functions.
         if(obj.TryGetComponent<CharacterController>(out CharacterController ccOther)) {
             ccOther.Move(rb.velocity * Time.deltaTime);
         } else if(obj.TryGetComponent<Rigidbody>(out Rigidbody rbOther)) {
@@ -123,7 +134,7 @@ public class MovingPlatform : InteractableBase {
     }
 
     // This function draws the Gizmo points and lines to help visualise the path of the platform.
-    private void OnDrawGizmos() {
+    private void OnDrawGizmosSelected() {
         if(positions.Length == 0) { return; }
 
         for(int i = 0; i < positions.Length; i++) {

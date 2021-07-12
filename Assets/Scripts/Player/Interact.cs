@@ -10,25 +10,42 @@ public class Interact : MonoBehaviour {
     // This is the maximum distance an object can be before it becomes out of reach.
     [SerializeField] private float maxReach = 5f;
 
-    /* Distance and size are just two settings for the jank crosshair in the middle of the screen.
-       It just draws a tiny sphere gizmo in the centre of the screen as a crosshair.
-       This is just to get an accurate idea of where I am aiming to test things. This will not be the final version of the crosshair. */
-    [SerializeField] private float distance = 0.4f;
-    [SerializeField] private float size = 0.0025f;
+    // The speed of rotating a holdable item.
+    [SerializeField] private float rotateSpeed = 100f;
+
+    // The speed of changing a holdable item's distance point.
+    [SerializeField] private float distChangeSpeed = 1f;
 
     // This is a reference to the item you are currently holding.
-    private HoldItem holdItem = null;
+    [HideInInspector] public HoldItem holdItem = null;
+
+    private Camera cam;
 
     // is interacting with object
     private bool _isInteracting;
+
+    // Is rotating hold item (if currently holding one)
+    private bool _isRotatingItem;
+    private float _rotateDir;
+
+    // Is changing hold item distance (if currently holding one)
+    private bool _isDistChangeItem;
+    private float _distanceAdjust;
 
     private void Start() {
         if(input == null) {
             input = GetComponent<PlayerInput>();
         }
+
+        cam = Camera.main;
     }
 
     void Update() {
+        if(holdItem != null) {
+            if(_isRotatingItem) { holdItem.Rotate(_rotateDir * rotateSpeed); }
+            if(_isDistChangeItem) { holdItem.AdjustHoldDistance(_distanceAdjust * distChangeSpeed); }
+        }
+
         if(_isInteracting) {
             // If we are currently holding an object, call its Deactivate() function and set holdItem to null and return
             if(holdItem != null) {
@@ -39,13 +56,16 @@ public class Interact : MonoBehaviour {
             }
 
             // Fire a ray in the direction we are looking, up to maximum reach.
-            Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
+            Ray ray = cam.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
 
-            if(Physics.Raycast(ray, out RaycastHit hitInfo, maxReach)) {
+            if(Physics.Raycast(ray, out RaycastHit hitInfo, maxReach, ~(1 << LayerMask.NameToLayer("Player")), QueryTriggerInteraction.Ignore)) {
                 // If we hit a holdable item, save a reference to it and Activate() it.
                 if(hitInfo.collider.TryGetComponent<HoldItem>(out HoldItem item)) {
                     holdItem = item;
                     holdItem.Activate();
+
+                    float dist = (holdItem.transform.position - cam.transform.position).magnitude;
+                    holdItem.SetHoldDistance(dist);
 
                     return;
                 }
@@ -68,19 +88,17 @@ public class Interact : MonoBehaviour {
         _isInteracting = false;
     }
 
-    private void OnDrawGizmos() {
-        // store main cam as a variable as calling Camera.main is expensive
-        var cam = Camera.main;
-
-        if(cam == null) return;
-
-        // The jank crosshair.
-        Gizmos.color = Color.black;
-        Gizmos.DrawSphere(cam.transform.position + (cam.transform.forward * distance), size);
-        Gizmos.color = Color.white;
-    }
-
     public void OnInteract(InputAction.CallbackContext value) {
         _isInteracting = value.canceled;
+    }
+
+    public void OnRotateItem(InputAction.CallbackContext value) {
+        _isRotatingItem = value.performed;
+        _rotateDir = value.ReadValue<float>();
+    }
+
+    public void OnDistanceChangeItem(InputAction.CallbackContext value) {
+        _isDistChangeItem = value.performed;
+        _distanceAdjust = value.ReadValue<float>();
     }
 }

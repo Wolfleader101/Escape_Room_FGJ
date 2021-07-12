@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInput), typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour {
@@ -72,5 +73,13 @@ public class FirstPersonController : MonoBehaviour {
         if(value.started && characterController.isGrounded) {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityScale);
         }
+    }
+
+    public void OnLevelSelect(InputAction.CallbackContext value) {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OnQuit(InputAction.CallbackContext value) {
+        Application.Quit();
     }
 }
